@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <!DOCTYPE html>
+        <html lang="pt-br">
+
+        <head>
+            <link rel="preload"
+                href="https://www.sults.com.br/sults/images/ilustracoes/primaria/criar-conta-fundo-sults.webp"
+                as="image">
+            <jsp:include page="/sults/components/default/include_meta.jsp">
+                <jsp:param name="meta_title" value="SULTS: Solicite agora uma avaliação gratuita" />
+                <jsp:param name="meta_description"
+                    value="Faça agora mesmo um teste gratuito na plataforma SULTS | Solicite uma avaliação e experimente por 14 dias gratuitamente!" />
+            </jsp:include>
+        </head>
+
+        <body>
+            <a class="logo" href="https://www.sults.com.br/">
+                <img src="/sults/images/logo/sults/completa/sults-logo-oficial.svg" width="95" height="24"
+                    alt="logo sults">
+            </a>
+            <main>
+                <section class="conta-register-section">
+
+                    <div class="content-register">
+                        <div class="conta-register-container">
+                            <h1
+                                style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; text-align: center;">
+                                Crie sua conta SULTS grátis</h1>
+
+                            <form name="form-register" class="form-register" method="post">
+                                <div class="form-group">
+                                    <label for="name">Nome</label><input type="text" name="name" id="name"
+                                        class="form-control" placeholder="Seu nome completo">
+                                    <div id="error-name" class="login-error-message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Empresa</label><input type="text" name="company" id="company"
+                                        class="form-control" placeholder="Nome da empresa">
+                                    <div id="error-company" class="login-error-message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail corporativo</label><input type="text" name="email"
+                                        id="email" class="form-control" placeholder="email@empresa.com">
+                                    <div id="error-email" class="login-error-message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefone com DDD</label><input type="text" name="phone"
+                                        id="phone" class="form-control" placeholder="(00) 0 000-0000"
+                                        oninput="applyPhoneMask(this)" maxlength="15">
+                                    <div id="error-phone" class="login-error-message"></div>
+                                </div>
+                                <button type="button" class="register-button" aria-label="Criar conta grátis"
+                                    onclick="RegisterFormSubmit()">
+                                    Criar conta
+                                    <svg class="spinner" width="18" height="18" viewBox="0 0 66 66"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
+                                            cy="33" r="30"></circle>
+                                    </svg>
+                                </button>
+                            </form>
+                            <p>
+                                Já tem uma conta? <a href="https://app.sults.com.br" class="register-link">Fazer
+                                    login</a>
+                            </p>
+
+                            <div class="copy">
+                                <a href="https://www.sults.com.br/">
+                                    <img src="/sults/images/logo/sults/completa/sults-logo-oficial.svg" width="95"
+                                        height="24" alt="Logo SULTS">
+                                </a>
+                                <p>© 2024 SULTS Tecnologia. Todos os direitos reservados.</p>
+                            </div>
+                        </div>
+                        <div class="term-register">
+                            <a href="https://ajuda.sults.com.br/" target="_blank" rel="noreferrer"
+                                class="register-link">Ajuda</a>
+                            <a href="https://policies.sults.com.br/politica-de-privacidade" target="_blank"
+                                rel="noreferrer" class="register-link">Privacidade</a>
+                            <a href="https://policies.sults.com.br/termos-de-uso" target="_blank" rel="noreferrer"
+                                class="register-link">Termos</a>
+                        </div>
+
+                        <div class="conta-success-container">
+                            <h2 id="nameRegister"
+                                style="color: #032d60; font-size: 2.4rem; font-weight: 700; text-align: center; line-height: 1.2; text-transform: unset">
+                                Verifique sua caixa de entrada no e-mail</h2>
+                            <p style="text-align: center">Falta pouco para começar seu teste
+                                de 14 dias grátis, acesse o link que enviamos no seu e-mail ou
+                                WhatsApp.</p>
+                            <img src="/sults/images/icones/register/email-fast-outline.webp" loading="lazy"
+                                alt="E-mail Icone" width="68" height="68">
+                            <p style="text-align: center">Enviamos um e-mail para:</p>
+                            <p id="emailRegister"
+                                style="text-align: center; color: #032d60; font-weight: 700; font-size: 1.5rem; margin-top: 0;">
+                                Seu
+                                e-mail informado.</p>
+                            <button type="button" class="register-button" style="width: 60%"
+                                aria-label="Voltar para o site" onclick="window.location.href='/'">Voltar
+                                para o site</button>
+                            <p class="text-center">Não recebeu o e-mail? Verifique sua caixa
+                                de spam ou tente novamente.</p>
+                        </div>
+                        <div id="errorModal" class="modal-contact">
+                            <div class="modal-content">
+                                <img src="/sults/images/icones/contato/error-modal-icon.webp" loading="lazy"
+                                    alt="E-mail Error Ícone" width="68" height="68">
+                                <h4
+                                    style="color: rgba(3, 45, 96, 1); font-weight: 700; font-size: 1.5rem; text-align: center; margin-bottom: 0; line-height: 1.2">
+                                    Oops! Algo de errado aconteceu!</h4>
+                                <p
+                                    style="color: rgba(95, 102, 108, 1); font-weight: 400; font-size: 1rem; text-align: center; margin-top: 0;">
+                                    Desculpe, não conseguimos processar sua solicitação, nossa equipe
+                                    será notificada. Por favor, tente novamente mais tarde.</p>
+                                <button type="button" id="closeModalError" aria-label="Fechar Modal"
+                                    class="contact-button" style="text-align: center; width: 100%">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <script src="script.js"></script>
+        </body>
+
+        </html>
