@@ -1,136 +1,632 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="preload" href="https://www.sults.com.br/sults/images/ilustracoes/primaria/criar-conta-fundo-sults.webp"
+        as="image">
+    <jsp:include page="/sults/components/default/include_meta.jsp">
+        <jsp:param name="meta_title" value="SULTS: Solicite agora uma avaliação gratuita" />
+        <jsp:param name="meta_description"
+            value="Faça agora mesmo um teste gratuito na plataforma SULTS | Solicite uma avaliação e experimente por 14 dias gratuitamente!" />
+    </jsp:include>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .register-link {
+            display: inline-block;
+            margin-top: 0;
+            color: #0f5da6;
+            text-decoration: none;
+            font-weight: 400;
+            line-height: 22px;
+            text-align: left;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        .conta-register-container {
+            display: flex;
+            background-color: #ffffff;
+            padding: 2rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+			justify-content: center;
+			max-width: 700px;
+        }
+
+        .conta-success-container {
+            display: none; /*mude aqui para none*/
+            background-color: #ffffff;
+            padding: 3.25rem;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 12px;
+			min-height: 100vh;
+			max-width: 700px;
+        }
+
+        .form-control,
+        .register-button {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width : 768px) {
+            .conta-register-container,
+            .conta-success-container {
+                padding: 0 1rem !important;
+            }
+
+            .conta-register-container h1 {
+                text-align: left !important;
+                font-size: 2.2rem !important;
+            }
+
+            .form-register {
+                width: 100%;
+            }
+
+            .conta-register-section {
+                box-shadow: none;
+            }
+
+            .conta-register-section {
+                overflow-x: visible;
+            }
+        }
+
+        @media (min-width : 768px) {
+            .form-register {
+                width: 75%;
+            }
+
+            .conta-register-container form+p,
+            h1 {
+                width: 75%;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 14px;
+            width: 100%;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            height: 54px;
+            margin-top: 0;
+            padding: 16px;
+            box-sizing: border-box;
+            opacity: 1;
+            border-radius: 5px;
+            border: solid 1px rgb(207, 218, 225);
+            font-size: 1rem;
+        }
+
+        input:hover {
+            border: solid 1px #00acac;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00acac;
+            box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em;
+        }
+
+        .register-button {
+            padding: 14px 24px;
+            margin-top: 14px;
+            width: 100%;
+            gap: 6px;
+            background: linear-gradient(#1b7eda 0, #1b7EDA 100%);
+            color: white;
+            opacity: 1;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            border: none;
+            margin-bottom: 42px;
+        }
+
+        .register-button:hover,
+        .register-button:focus {
+            background: linear-gradient(#0285ff 0, #1980e0 100%);
+        }
+
+        .register-button:focus {
+            box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+        }
+
+        .conta-register-container p {
+            margin: 0;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        .login-error-message {
+            display: none;
+            font-size: 1rem;
+            padding: 4px 0;
+            box-sizing: border-box;
+            opacity: 1;
+            transition: border-color 0.3s;
+            font-weight: 400;
+            border-top: solid 2px #f64c3c;
+            margin: -4px 1px 0 1px;
+            color: #f64c3c;
+        }
+
+        .spinner {
+            display: none;
+            -webkit-animation: rotator 1.4s linear infinite;
+            animation: rotator 1.4s linear infinite;
+            margin-left: 12px
+        }
+
+        .modal-contact {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            transform: translate(0, 50%);
+            padding: 20px;
+            border: 1px solid #888;
+            max-width: 390px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-radius: 1rem;
+            align-items: center;
+        }
+
+        .contact-button {
+            padding: 10px 24px;
+            gap: 8px;
+            background: #1B7EDA;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: auto;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .contact-button:hover {
+            color: white;
+            background: #165694;
+            transition: background ease-in 100ms;
+        }
+
+        @ -webkit-keyframes rotator {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100 % {
+                -webkit-transform:
+
+
+                    rotate (270deg);
+
+
+                transform:
+
+
+                    rotate (270deg);
+
+
+            }
+        }
+
+        @ keyframes rotator {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100 % {
+                -webkit-transform:
+
+
+                    rotate (270deg);
+
+
+                transform:
+
+
+                    rotate (270deg);
+
+
+            }
+        }
+
+        .path {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            stroke: #fff;
+            background-image: linear-gradient(-20deg, #0f5da6 0, #0f5da6 100%);
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            -webkit-animation: dash 1.4s ease-in-out infinite;
+            animation: dash 1.4s ease-in-out infinite;
+        }
+
+        @ -webkit-keyframes dash {
+            0% {
+                stroke-dashoffset: 187;
+            }
+
+            50 % {
+                stroke-dashoffset:
+
+                    46 .75;
+
+
+                -webkit-transform:
+
+                    rotate (135deg);
+
+
+                transform:
+
+                    rotate (135deg);
+
+
+            }
+
+            100 % {
+                stroke-dashoffset:
+
+                    187;
+
+
+                -webkit-transform:
+
+                    rotate (450deg);
+
+
+                transform:
+
+                    rotate (450deg);
+
+
+            }
+        }
+
+        @ keyframes dash {
+            0% {
+                stroke-dashoffset: 187;
+            }
+
+            50 % {
+                stroke-dashoffset:
+
+                    46 .75;
+
+
+                -webkit-transform:
+
+                    rotate (135deg);
+
+
+                transform:
+
+                    rotate (135deg);
+
+
+            }
+
+            100 % {
+                stroke-dashoffset:
+
+                    187;
+
+
+                -webkit-transform:
+
+                    rotate (450deg);
+
+
+                transform:
+
+                    rotate (450deg);
+
+
+            }
+        }
+
+        .content-img-register {
+            width: 100%;
+            background: #fbfdfe;
+            box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+            overflow: hidden;
+            grid-template-columns: 60% 40%;
+            display: grid;
+            z-index: 1000;
+            justify-items: center;
+        }
+
+
+
+        .left-logo-div {
+            width: 100%;
+            background-color: #17171D;
+            background-image: url("sults/images/ilustracoes/primaria/criar-conta-fundo-signup2.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .copy {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 100px;
+        }
+
+        .copy img {
+            margin-bottom: 15px;
+        }
+
+        @media (max-width : 1100px) {
+
+            .left-logo-div,
+            .copy {
+                display: none;
+            }
+
+            .content-img-register {
+                grid-template-columns: 100%;
+            }
+        }
+
+        @media (min-width : 1100px) and (max-width: 1347px) {
+            .content-img-register {
+                grid-template-columns: 50% 50%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <main>
-        <!DOCTYPE html>
-        <html lang="pt-br">
+        <section class="conta-register-section">
+            <div class="content-img-register">
+					<div class="left-logo-div" role="img" arial-label="sults imagem de cadastro"></div>
+					<div class="conta-register-container">
+						<h1
+							style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 40px;">
+							Seu espaço de trabalho começa aqui</h1>
 
-        <head>
-            <link rel="preload"
-                href="https://www.sults.com.br/sults/images/ilustracoes/primaria/criar-conta-fundo-sults.webp"
-                as="image">
-            <jsp:include page="/sults/components/default/include_meta.jsp">
-                <jsp:param name="meta_title" value="SULTS: Solicite agora uma avaliação gratuita" />
-                <jsp:param name="meta_description"
-                    value="Faça agora mesmo um teste gratuito na plataforma SULTS | Solicite uma avaliação e experimente por 14 dias gratuitamente!" />
-            </jsp:include>
-        </head>
+						<form name="form-register" class="form-register" method="post">
+							<div class="form-group">
+								<label for="name">Nome</label><input type="text" name="name" id="name" class="form-control"
+									placeholder="Informe seu nome">
+								<div id="error-name" class="login-error-message"></div>
+							</div>
+							<div class="form-group">
+								<label for="company">Nome da empresa</label><input type="text" name="company" id="company"
+									class="form-control" placeholder="Informe sua empresa">
+								<div id="error-company" class="login-error-message"></div>
+							</div>
+							<div class="form-group">
+								<label for="email">E-mail corporativo</label><input type="text" name="email" id="email"
+									class="form-control" placeholder="Informe seu endereço de e-mail">
+								<div id="error-email" class="login-error-message"></div>
+							</div>
+							<div class="form-group">
+								<label for="phone">Telefone com DDD</label><input type="text" name="phone" id="phone"
+									class="form-control" placeholder="Informe seu telefone ou celular"
+									oninput="applyPhoneMask(this)" maxlength="15">
+								<div id="error-phone" class="login-error-message"></div>
+							</div>
+							<button type="button" class="register-button" aria-label="Criar conta grátis"
+								onclick="RegisterFormSubmit()">
+								Criar conta
+								<svg class="spinner" width="18" height="18" viewBox="0 0 66 66"
+									xmlns="http://www.w3.org/2000/svg">
+									<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33"
+										r="30"></circle>
+								</svg>
+							</button>
+						</form>
+						<p>
+							Já tem uma conta? <a href="https://app.sults.com.br" class="register-link">Fazer login</a>
+						</p>
 
-        <body>
-            <a class="logo" href="https://www.sults.com.br/">
-                <img src="/sults/images/logo/sults/completa/sults-logo-oficial.svg" width="95" height="24"
-                    alt="logo sults">
-            </a>
-            <main>
-                <section class="conta-register-section">
+						<div class="copy">
+							<img src="/sults/images/logo/sults/completa/sults-logo-oficial.svg" width="95" height="24"
+								alt="Logo oficial da SULTS completa">
+							<p>© 2024 SULTS Tecnology. All Rights Reserved.</p>
+						</div>
+					</div>
+				
+				<div class="conta-success-container">
+					<h2 id="nameRegister"
+						style="color: #032d60; font-size: 2.4rem; font-weight: 700; text-align: center; line-height: 1.2; text-transform: unset">
+						Verifique sua caixa de entrada no e-mail</h2>
+					<p style="text-align: center">Falta pouco para começar seu teste
+						de 14 dias grátis, acesse o link que enviamos no seu e-mail ou
+						WhatsApp.</p>
+					<img src="/sults/images/icones/register/email-fast-outline.webp" loading="lazy" alt="E-mail Icone"
+						width="68" height="68">
+					<p style="text-align: center">Enviamos um e-mail para:</p>
+					<p id="emailRegister"
+						style="text-align: center; color: #032d60; font-weight: 700; font-size: 1.5rem; margin-top: 0;">Seu
+						e-mail informado.</p>
+					<button type="button" class="register-button" style="width: 60%" aria-label="Voltar para o site"
+						onclick="window.location.href='/'">Voltar
+						para o site</button>
+					<p class="text-center">Não recebeu o e-mail? Verifique sua caixa
+						de spam ou tente novamente.</p>
+				</div>
+				<div id="errorModal" class="modal-contact">
+					<div class="modal-content">
+						<img src="/sults/images/icones/contato/error-modal-icon.webp" loading="lazy"
+							alt="E-mail Error Ícone" width="68" height="68">
+						<h4
+							style="color: rgba(3, 45, 96, 1); font-weight: 700; font-size: 1.5rem; text-align: center; margin-bottom: 0; line-height: 1.2">
+							Oops! Algo de errado aconteceu!</h4>
+						<p
+							style="color: rgba(95, 102, 108, 1); font-weight: 400; font-size: 1rem; text-align: center; margin-top: 0;">
+							Desculpe, não conseguimos processar sua solicitação, nossa equipe
+							será notificada. Por favor, tente novamente mais tarde.</p>
+						<button type="button" id="closeModalError" aria-label="Fechar Modal" class="contact-button"
+							style="text-align: center; width: 100%">Fechar</button>
+					</div>
+				</div>
+			</div>
+        </section>
+    </main>
+    <script>
+        function RegisterFormSubmit(event) {
+            let name = document.querySelector("#name").value, company = document
+                .querySelector("#company").value, email = document
+                    .querySelector("#email").value, phone = document
+                        .querySelector("#phone").value;
+            if (!validateForm(name, company, email, phone))
+                return;
+            document.querySelector(".spinner").style.display = "inline-block";
+            sendAsgard(name, company, email, phone);
+        }
+        function sendAsgard(name, company, email, phone) {
+            let a = new XMLHttpRequest();
+            (a.withCredentials = !1),
+                a
+                    .open("POST",
+                        "https://3sksqeptx3.execute-api.us-east-1.amazonaws.com/prod/site/request-demo"),
+                a.setRequestHeader("Content-Type", "application/json"),
+                (a.onload = function () {
+                    if (a.status === 200) {
+                        document.querySelector(".spinner").style.display = "none";
+                        document.querySelector(".conta-success-container").style.display = "flex";
+                        document.querySelector(".conta-register-container").style.display = "none";
+                        document.querySelector("#nameRegister").textContent = name
+                            .split(' ')[0]
+                            + ", verifique sua caixa de entrada no e-mail";
+                        document.querySelector("#emailRegister").textContent = email;
+                        umami.track('Signup: Criação de conta');
+                    } else {
+                        document.getElementById("errorModal").style.display = "block";
+                        umami.track('Erro ' + a.status
+                            + ': Criação de conta', {
+                            Event: new Date().toLocaleString('pt-BR', {
+                                timeZone: 'America/Sao_Paulo'
+                            })
+                        });
+                    }
+                });
+            let r = {
+                tituloNegocio: company + " - " + name,
+                nome: name,
+                email: email,
+                celular: phone,
+                empresa: company,
+                responsavelId: 979,
+                campanhaId: null,
+                origemId: 1,
+                etapaId: 17,
+            };
+            a.send(JSON.stringify(r));
+        }
+        function validateForm(name, company, email, phone) {
+            let isValid = true;
+            clearErrors();
+            if (name === "") {
+                showError("error-name", "Nome: Preenchimento obrigatório");
+                isValid = false;
+            }
+            if (company === "") {
+                showError("error-company", "Empresa: Preenchimento obrigatório");
+                isValid = false;
+            }
+            if (email === "") {
+                showError("error-email", "E-mail: Preenchimento obrigatório");
+                isValid = false;
+            } else {
+                if (!validateEmail(email)) {
+                    showError("error-email", "O e-mail informado não é válido");
+                    isValid = false;
+                }
+            }
+            if (phone === "") {
+                showError("error-phone", "Telefone: Preenchimento obrigatório");
+                isValid = false;
+            } else {
+                if (!validatePhone(phone)) {
+                    showError("error-phone",
+                        "O telefone informado não é válido");
+                    isValid = false;
+                }
+            }
+            return isValid;
+        }
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+        function validatePhone(phone) {
+            const regex = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/;
+            return regex.test(phone);
+        }
+        function showError(fieldId, message) {
+            const errorDiv = document.getElementById(fieldId);
+            errorDiv.textContent = message;
+            errorDiv.style.display = "block";
+        }
+        function applyPhoneMask(element) {
+            let value = element.value;
+            value = value.replace(/\D/g, "");
+            if (value.length <= 10) {
+                value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+                value = value.replace(/(\d{4})(\d)/, "$1-$2");
+            } else {
+                value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+                value = value.replace(/(\d{5})(\d)/, "$1-$2");
+            }
+            element.value = value;
+        }
+        function clearErrors() {
+            document.querySelectorAll(".login-error-message").forEach(
+                function (error) {
+                    error.textContent = "";
+                    error.style.display = "none";
+                });
+        }
+        document.getElementById("closeModalError").onclick = function () {
+            document.getElementById("errorModal").style.display = "none";
+        };
+    </script>
+</body>
 
-                    <div class="content-register">
-                        <div class="conta-register-container">
-                            <h1
-                                style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; text-align: center;">
-                                Crie sua conta SULTS grátis</h1>
-
-                            <form name="form-register" class="form-register" method="post">
-                                <div class="form-group">
-                                    <label for="name">Nome</label><input type="text" name="name" id="name"
-                                        class="form-control" placeholder="Seu nome completo">
-                                    <div id="error-name" class="login-error-message"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="company">Empresa</label><input type="text" name="company" id="company"
-                                        class="form-control" placeholder="Nome da empresa">
-                                    <div id="error-company" class="login-error-message"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">E-mail corporativo</label><input type="text" name="email"
-                                        id="email" class="form-control" placeholder="email@empresa.com">
-                                    <div id="error-email" class="login-error-message"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Telefone com DDD</label><input type="text" name="phone"
-                                        id="phone" class="form-control" placeholder="(00) 0 000-0000"
-                                        oninput="applyPhoneMask(this)" maxlength="15">
-                                    <div id="error-phone" class="login-error-message"></div>
-                                </div>
-                                <button type="button" class="register-button" aria-label="Criar conta grátis"
-                                    onclick="RegisterFormSubmit()">
-                                    Criar conta
-                                    <svg class="spinner" width="18" height="18" viewBox="0 0 66 66"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33"
-                                            cy="33" r="30"></circle>
-                                    </svg>
-                                </button>
-                            </form>
-                            <p>
-                                Já tem uma conta? <a href="https://app.sults.com.br" class="register-link">Fazer
-                                    login</a>
-                            </p>
-
-                            <div class="copy">
-                                <a href="https://www.sults.com.br/">
-                                    <img src="/sults/images/logo/sults/completa/sults-logo-oficial.svg" width="95"
-                                        height="24" alt="Logo SULTS">
-                                </a>
-                                <p>© 2024 SULTS Tecnologia. Todos os direitos reservados.</p>
-                            </div>
-                        </div>
-                        <div class="term-register">
-                            <a href="https://ajuda.sults.com.br/" target="_blank" rel="noreferrer"
-                                class="register-link">Ajuda</a>
-                            <a href="https://policies.sults.com.br/politica-de-privacidade" target="_blank"
-                                rel="noreferrer" class="register-link">Privacidade</a>
-                            <a href="https://policies.sults.com.br/termos-de-uso" target="_blank" rel="noreferrer"
-                                class="register-link">Termos</a>
-                        </div>
-
-                        <div class="conta-success-container">
-                            <h2 id="nameRegister"
-                                style="color: #032d60; font-size: 2.4rem; font-weight: 700; text-align: center; line-height: 1.2; text-transform: unset">
-                                Verifique sua caixa de entrada no e-mail</h2>
-                            <p style="text-align: center">Falta pouco para começar seu teste
-                                de 14 dias grátis, acesse o link que enviamos no seu e-mail ou
-                                WhatsApp.</p>
-                            <img src="/sults/images/icones/register/email-fast-outline.webp" loading="lazy"
-                                alt="E-mail Icone" width="68" height="68">
-                            <p style="text-align: center">Enviamos um e-mail para:</p>
-                            <p id="emailRegister"
-                                style="text-align: center; color: #032d60; font-weight: 700; font-size: 1.5rem; margin-top: 0;">
-                                Seu
-                                e-mail informado.</p>
-                            <button type="button" class="register-button" style="width: 60%"
-                                aria-label="Voltar para o site" onclick="window.location.href='/'">Voltar
-                                para o site</button>
-                            <p class="text-center">Não recebeu o e-mail? Verifique sua caixa
-                                de spam ou tente novamente.</p>
-                        </div>
-                        <div id="errorModal" class="modal-contact">
-                            <div class="modal-content">
-                                <img src="/sults/images/icones/contato/error-modal-icon.webp" loading="lazy"
-                                    alt="E-mail Error Ícone" width="68" height="68">
-                                <h4
-                                    style="color: rgba(3, 45, 96, 1); font-weight: 700; font-size: 1.5rem; text-align: center; margin-bottom: 0; line-height: 1.2">
-                                    Oops! Algo de errado aconteceu!</h4>
-                                <p
-                                    style="color: rgba(95, 102, 108, 1); font-weight: 400; font-size: 1rem; text-align: center; margin-top: 0;">
-                                    Desculpe, não conseguimos processar sua solicitação, nossa equipe
-                                    será notificada. Por favor, tente novamente mais tarde.</p>
-                                <button type="button" id="closeModalError" aria-label="Fechar Modal"
-                                    class="contact-button" style="text-align: center; width: 100%">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-            <script src="script.js"></script>
-        </body>
-
-        </html>
+</html>
