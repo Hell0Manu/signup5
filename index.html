@@ -1,863 +1,1545 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <link rel="preload" href="https://www.sults.com.br/sults/images/ilustracoes/primaria/criar-conta-fundo-sults.webp"
-        as="image">
-    <jsp:include page="/sults/components/default/include_meta.jsp">
-        <jsp:param name="meta_title" value="SULTS: Solicite agora uma avaliação gratuita" />
-        <jsp:param name="meta_description"
-            value="Faça agora mesmo um teste gratuito na plataforma SULTS | Solicite uma avaliação e experimente por 14 dias gratuitamente!" />
-        <link rel="stylesheet" href="style.css">
-    </jsp:include>
-    <style>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+<link rel="preload"
+	href="/sults/images/ilustracoes/primaria/criar-conta-fundo-sults.webp"
+	as="image"><jsp:include
+	page="/sults/components/default/include_meta.jsp"><jsp:param
+		name="meta_title" value="SULTS: Solicite agora uma avaliação gratuita" /><jsp:param
+		name="meta_description"
+		value="Faça agora mesmo um teste gratuito na plataforma SULTS | Solicite uma avaliação e experimente por 14 dias gratuitamente!" />
+
+
+</jsp:include>
+
+<style>
 body {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .register-link {
-    display: inline-block;
-    margin-top: 0;
-    color: #0f5da6;
-    text-decoration: none;
-    font-weight: 400;
-    line-height: 22px;
-    text-align: left;
+	display: inline-block;
+	margin-top: 0;
+	color: #0f5da6;
+	text-decoration: none;
+	font-weight: 400;
+	line-height: 22px;
+	text-align: left;
 }
 
 .register-link:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .conta-register-container {
-    display: flex;
-    background-color: #ffffff;
-    padding: 2rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    /* min-height: 100vh; */
-    /* max-width: 700px; */
+	display: flex;
+	background-color: #ffffff;
+	padding: 2rem;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	/* min-height: 100vh; */
+	/* max-width: 700px; */
 }
 
 .teste {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    max-width: 540px;
-    padding-right: 70px;
-
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	max-width: 560px;
+		border-right: 1px solid #ebebeb;
 }
 
 .left-div {
-    width: 360px;
-    height: 900px;
-    /* background: aqua; */
-    border-left: 1px solid #ebebeb;
-    padding-left: 70px;
-
+	/*background: aqua;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+	width: 35%;
 }
 
 .ct-navigation {
-    display: flex;
-    padding: 1.5rem 0;
-    overflow-x: hidden;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 25px;
+	display: flex;
+	padding: 1.5rem 0;
+	overflow-x: hidden;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 25px;
 }
 
 .ct-header {
-    width: 100%;
-    display: flex;
-    min-height: 56px;
-    padding: 0 1.5rem;
-    max-width: 1200px;
-    align-items: center;
-    justify-content: space-between;
+	width: 100%;
+	display: flex;
+	min-height: 56px;
+	padding: 0 1.5rem;
+	max-width: 1200px;
+	align-items: center;
+	justify-content: space-between;
 }
 
-
 .check::before {
-    content: "\2714";
-    font-size: 16px;
-    color: #616161;
-    margin-right: 8px;
-    display: inline-block;
+	content: "\2714";
+	font-size: 16px;
+	color: #616161;
+	margin-right: 8px;
+	display: inline-block;
 }
 
 .list-recursos {
-    list-style: none;
-    color: #616161;
-    padding-left: 0px;
+	list-style: none;
+	color: #616161;
+	padding-left: 0px;
 }
-
 
 .conta-success-container {
-    display: none;
-    /*mude aqui para none*/
-    background-color: #ffffff;
-    padding: 3.25rem;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 12px;
-    min-height: 100vh;
-    max-width: 700px;
+	display: none;
+	/*mude aqui para none*/
+	background-color: #ffffff;
+	padding: 3.25rem;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 12px;
+	min-height: 100vh;
+	max-width: 700px;
 }
 
-.form-control,
-.register-button {
-    width: 100%;
-    box-sizing: border-box;
+.form-control, .register-button {
+	width: 100%;
+	box-sizing: border-box;
 }
 
-@media (max-width : 768px) {
-
-    .conta-register-container,
-    .conta-success-container {
-        padding: 0 1rem !important;
-    }
-
-    .conta-register-container h1 {
-        text-align: left !important;
-        font-size: 2.2rem !important;
-    }
-
-    .form-register {
-        width: 100%;
-    }
-
-    .conta-register-section {
-        box-shadow: none;
-    }
-
-    .conta-register-section {
-        overflow-x: visible;
-    }
+@media ( max-width : 768px) {
+	.conta-register-container, .conta-success-container {
+		padding: 0 1rem !important;
+	}
+	.conta-register-container h1 {
+		text-align: left !important;
+		font-size: 2.2rem !important;
+	}
+	.form-register {
+		width: 100%;
+	}
+	.conta-register-section {
+		box-shadow: none;
+	}
+	.conta-register-section {
+		overflow-x: visible;
+	}
 }
 
-@media (min-width : 768px) {
-    .form-register {
-        width: 75%;
-    }
-
-    .conta-register-container form+p,
-    h1 {
-        width: 75%;
-    }
+@media ( min-width : 768px) {
+	.form-register {
+		width: 75%;
+	}
+	.conta-register-container form+p, h1 {
+		width: 75%;
+	}
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-bottom: 14px;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-bottom: 14px;
+	width: 100%;
 }
 
 label {
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 .form-control {
-    height: 54px;
-    margin-top: 0;
-    padding: 16px;
-    box-sizing: border-box;
-    opacity: 1;
-    border-radius: 5px;
-    border: solid 1px rgb(207, 218, 225);
-    font-size: 1rem;
+	height: 54px;
+	margin-top: 0;
+	padding: 16px;
+	box-sizing: border-box;
+	opacity: 1;
+	border-radius: 5px;
+	border: solid 1px rgb(207, 218, 225);
+	font-size: 1rem;
 }
 
 input:hover {
-    border: solid 1px #00acac;
+	border: solid 1px #00acac;
 }
 
 input:focus {
-    outline: none;
-    border-color: #00acac;
-    box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05) 0 0.25em 1em;
+	outline: none;
+	border-color: #00acac;
+	box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.25em, rgba(90, 125, 188, 0.05)
+		0 0.25em 1em;
 }
 
 .register-button {
-    padding: 14px 24px;
-    margin-top: 14px;
-    width: 100%;
-    gap: 6px;
-    background: linear-gradient(#1b7eda 0, #1b7EDA 100%);
-    color: white;
-    opacity: 1;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 6px;
-    border: none;
-    margin-bottom: 42px;
+	padding: 14px 24px;
+	margin-top: 14px;
+	width: 100%;
+	gap: 6px;
+	background: linear-gradient(#1b7eda 0, #1b7EDA 100%);
+	color: white;
+	opacity: 1;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 700;
+	border-radius: 6px;
+	border: none;
+	margin-bottom: 42px;
 }
 
-.register-button:hover,
-.register-button:focus {
-    background: linear-gradient(#0285ff 0, #1980e0 100%);
+.register-button:hover, .register-button:focus {
+	background: linear-gradient(#0285ff 0, #1980e0 100%);
 }
 
 .register-button:focus {
-    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+	box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
 
 .conta-register-container p {
-    margin: 0;
-    font-weight: 400;
-    font-size: 1rem;
+	margin: 0;
+	font-weight: 400;
+	font-size: 1rem;
 }
 
 .login-error-message {
-    display: none;
-    font-size: 1rem;
-    padding: 4px 0;
-    box-sizing: border-box;
-    opacity: 1;
-    transition: border-color 0.3s;
-    font-weight: 400;
-    border-top: solid 2px #f64c3c;
-    margin: -4px 1px 0 1px;
-    color: #f64c3c;
+	display: none;
+	font-size: 1rem;
+	padding: 4px 0;
+	box-sizing: border-box;
+	opacity: 1;
+	transition: border-color 0.3s;
+	font-weight: 400;
+	border-top: solid 2px #f64c3c;
+	margin: -4px 1px 0 1px;
+	color: #f64c3c;
 }
 
 .spinner {
-    display: none;
-    -webkit-animation: rotator 1.4s linear infinite;
-    animation: rotator 1.4s linear infinite;
-    margin-left: 12px
+	display: none;
+	-webkit-animation: rotator 1.4s linear infinite;
+	animation: rotator 1.4s linear infinite;
+	margin-left: 12px
 }
 
 .modal-contact {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+	display: none;
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    transform: translate(0, 50%);
-    padding: 20px;
-    border: 1px solid #888;
-    max-width: 390px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    border-radius: 1rem;
-    align-items: center;
+	background-color: #fefefe;
+	margin: auto;
+	transform: translate(0, 50%);
+	padding: 20px;
+	border: 1px solid #888;
+	max-width: 390px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border-radius: 1rem;
+	align-items: center;
 }
 
 .contact-button {
-    padding: 10px 24px;
-    gap: 8px;
-    background: #1B7EDA;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: auto;
-    border-radius: 8px;
-    border: none;
+	padding: 10px 24px;
+	gap: 8px;
+	background: #1B7EDA;
+	color: white;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: auto;
+	border-radius: 8px;
+	border: none;
 }
 
 .contact-button:hover {
-    color: white;
-    background: #165694;
-    transition: background ease-in 100ms;
+	color: white;
+	background: #165694;
+	transition: background ease-in 100ms;
 }
 
-@ -webkit-keyframes rotator {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-
-    100 % {
-        -webkit-transform:
-
-
-            rotate (270deg);
-
-
-        transform:
-
-
-            rotate (270deg);
-
-
-    }
+@
+-webkit-keyframes rotator { 0% {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
 }
 
-@ keyframes rotator {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-
-    100 % {
-        -webkit-transform:
+100
 
 
-            rotate (270deg);
+
+ 
 
 
-        transform:
+
+%
+{
+-webkit-transform
 
 
-            rotate (270deg);
 
 
-    }
+
+
+:
+
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+270deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+:
+
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+270deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+}
+}
+@
+keyframes rotator { 0% {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
 }
 
+100
+
+
+
+ 
+
+
+
+%
+{
+-webkit-transform
+
+
+
+
+
+
+:
+
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+270deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+:
+
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+270deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+}
+}
 .path {
-    stroke-dasharray: 187;
-    stroke-dashoffset: 0;
-    stroke: #fff;
-    background-image: linear-gradient(-20deg, #0f5da6 0, #0f5da6 100%);
-    -webkit-transform-origin: center;
-    transform-origin: center;
-    -webkit-animation: dash 1.4s ease-in-out infinite;
-    animation: dash 1.4s ease-in-out infinite;
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	stroke: #fff;
+	background-image: linear-gradient(-20deg, #0f5da6 0, #0f5da6 100%);
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	-webkit-animation: dash 1.4s ease-in-out infinite;
+	animation: dash 1.4s ease-in-out infinite;
 }
 
-@ -webkit-keyframes dash {
-    0% {
-        stroke-dashoffset: 187;
-    }
-
-    50 % {
-        stroke-dashoffset:
-
-            46 .75;
-
-
-        -webkit-transform:
-
-            rotate (135deg);
-
-
-        transform:
-
-            rotate (135deg);
-
-
-    }
-
-    100 % {
-        stroke-dashoffset:
-
-            187;
-
-
-        -webkit-transform:
-
-            rotate (450deg);
-
-
-        transform:
-
-            rotate (450deg);
-
-
-    }
+@
+-webkit-keyframes dash { 0% {
+	stroke-dashoffset: 187;
 }
 
-@ keyframes dash {
-    0% {
-        stroke-dashoffset: 187;
-    }
-
-    50 % {
-        stroke-dashoffset:
-
-            46 .75;
+50
 
 
-        -webkit-transform:
 
-            rotate (135deg);
-
-
-        transform:
-
-            rotate (135deg);
+ 
 
 
-    }
 
-    100 % {
-        stroke-dashoffset:
-
-            187;
+%
+{
+stroke-dashoffset
 
 
-        -webkit-transform:
-
-            rotate (450deg);
 
 
-        transform:
-
-            rotate (450deg);
 
 
-    }
+:
+
+
+
+
+
+            
+
+
+
+46
+
+
+
+ 
+
+
+
+.75
+
+
+
+
+
+
+;
+-webkit-transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+135deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+135deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+}
+100
+
+
+
+ 
+
+
+
+%
+{
+stroke-dashoffset
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+187
+
+
+
+
+
+
+;
+-webkit-transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+450deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+450deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+}
+}
+@
+keyframes dash { 0% {
+	stroke-dashoffset: 187;
 }
 
+50
+
+
+
+ 
+
+
+
+%
+{
+stroke-dashoffset
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+46
+
+
+
+ 
+
+
+
+.75
+
+
+
+
+
+
+;
+-webkit-transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+135deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+135deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+}
+100
+
+
+
+ 
+
+
+
+%
+{
+stroke-dashoffset
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+187
+
+
+
+
+
+
+;
+-webkit-transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+450deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
+:
+
+
+
+
+
+            
+
+
+
+rotate
+
+
+
+ 
+
+
+
+(
+
+
+
+
+
+
+450deg
+
+
+
+
+
+
+)
+
+
+
+
+
+
+;
+}
+}
 .content-img-register {
-    width: 100%;
-    background: #fbfdfe;
-    box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
-    overflow: hidden;
-    /* grid-template-columns: 60% 40%; */
-    display: flex;
-    z-index: 1000;
-    justify-items: center;
-    align-items: center;
+	width: 100%;
+	background: #fbfdfe;
+	box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+	overflow: hidden;
+	/* grid-template-columns: 60% 40%; */
+	display: flex;
+	z-index: 1000;
+	justify-items: center;
+	align-items: center;
 }
 
 .copy {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 100px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 50px;
 }
 
 .copy img {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
-@media (max-width : 1100px) {
-
-
-    .content-img-register {
-        grid-template-columns: 100%;
-    }
+@media ( max-width : 1010px) {
+	.conta-register-container {
+		flex-direction: column-reverse;
+	}
+	.left-div {
+		width: 540px;
+		border-left: none;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		max-width: 560px;
+	}
 }
 
-@media (min-width : 1100px) and (max-width: 1347px) {
-    .content-img-register {
-        grid-template-columns: 50% 50%;
-    }
+@media ( min-width : 1100px) and (max-width: 1347px) {
+	.content-img-register {
+		grid-template-columns: 50% 50%;
+	}
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Figtree', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Figtree', sans-serif;
 }
 
-body {
-    min-height: 100vh;
-    background: #3A1C71;
-    background: linear-gradient(45deg, #3A1C71, #D76D77, #FFAF7B);
+.pagina-nova {
+	padding-top: 110px;
 }
 
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: #fff;
-    border-bottom: 1px solid #e2e6f2;
-    padding: 16px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.container-nav-btn {
+	display: flex;
 }
 
-/* menu toggle */
-
-.menu-toggle {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.icon {
+	margin: 15px 0;
 }
 
-.menu-toggle::before {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 4px;
-    background: #000;
-    box-shadow: 0 8px 0 #000, 0 -8px 0 #000;
-    margin-left: 10px;
+#target {
+	width: 90%;
 }
 
-/* profile menu */
-
-.profile {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+#target span {
+	   font-size: 1.125rem;
 }
 
-.profile h3 {
-    text-align: end;
-    line-height: 1;
-    margin-bottom: 4px;
-    font-weight: 600;
+.inv {
+	display: none;
 }
 
-.profile p {
-    line-height: 1;
+.vis {
+	display: block;
+}
+
+.teste3 {
+	display: flex;
+}
+
+.teste3 a {
     font-size: 14px;
-    opacity: .6;
+    text-decoration: underline; 
 }
 
-.profile .img-box {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    overflow: hidden;
+.teste1 {
+	padding-left: 70px;
 }
 
-.profile .img-box img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.teste4 {
+	width: 50%;
 }
 
-/* menu (the right one) */
 
-.menu {
-    position: absolute;
-    top: calc(100% + 24px);
-    right: 16px;
-    width: 200px;
-    min-height: 100px;
-    background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
-    opacity: 0;
-    transform: translateY(-10px);
-    visibility: hidden;
-    transition: 300ms;
+.icon span {
+	font-size: 1rem;
 }
 
-.menu::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    right: 14px;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    transform: rotate(45deg);
-    z-index: -1;
+.font-poppins {
+font-size: 16px;
 }
 
-.menu.active {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+select {
+	cursor: pointer;
+	border-radius: 8px;
+	display: flex;
+	padding: 10px;
+	align-items: center;
+	text-transform: none;
+	background-color: #f3f9ff;
+	border: transparent;
+	box-shadow: 0 0 0 2px rgba(34, 130, 255, .58);
 }
 
-/* menu links */
-
-.menu ul {
-    position: relative;
+.contact-grid-item {
+    text-align: start;
     display: flex;
     flex-direction: column;
-    z-index: 10;
-    background: #fff;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 24px;
+    justify-content: flex-start;
+    border-radius: 16px;
+    border: solid 1px #C3C9D5;
+    margin-bottom: 10px;
 }
-
-.menu ul li {
-    list-style: none;
-}
-
-.menu ul li:hover {
-    background: #eee;
-}
-
-.menu ul li a {
-    text-decoration: none;
-    color: #000;
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    gap: 6px;
-}
-
-.menu ul li a i {
-    font-size: 1.2em;
-}
-
-.content-menu {
-    display: flex;
-}
-    </style>
+</style>
 </head>
-
 <body>
-<header></header>
+	<%@ include file="/sults/components/elements/include_elements_menu.jsp"%>
+	<main class="pagina-nova">
 
-    <main>
+		<section class="conta-register-section section">
+			<div class="conta-register-container container">
+				<div class="teste">
+					<h1
+						style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
+						Seu espaço de trabalho começa aqui</h1>
 
-        <section class="conta-register-section">
-            <div class="conta-register-container">
-                <div class="teste">
-                    <h1
-                        style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
-                        Seu espaço de trabalho começa aqui</h1>
+					<ul class="list-recursos">
+						<li class="font-default-grey"><i class="check"></i> <span
+							class="font-poppins font-small font-14 line-24">Sem
+								cobrança durante o período de teste</span></li>
+						<li class="font-default-grey"><i class="check"></i> <span
+							class="font-poppins font-small font-14 line-24">Acesse
+								todas as funcionalidades do plano escolhido</span></li>
+						<li class="font-default-grey"><i class="check"></i> <span
+							class="font-poppins font-small font-14 line-24">Configure
+								sua conta em poucos minutos</span></li>
+					</ul>
 
-                    <ul class="list-recursos">
-                        <li class="font-default-grey">
-                            <i class="check"></i>
-                            <span class="font-poppins font-small font-14 line-24">Sem cobrança durante o período de
-                                teste</span>
-                        </li>
-                        <li class="font-default-grey">
-                            <i class="check"></i>
-                            <span class="font-poppins font-small font-14 line-24">Acesse todas as funcionalidades do
-                                plano escolhido</span>
-                        </li>
-                        <li class="font-default-grey">
-                            <i class="check"></i>
-                            <span class="font-poppins font-small font-14 line-24">Configure sua conta em poucos
-                                minutos</span>
-                        </li>
-                    </ul>
-
-                    <form name="form-register" class="form-register" method="post">
-                        <div class="form-group">
-                            <label for="name">Nome</label><input type="text" name="name" id="name" class="form-control"
-                                placeholder="Informe seu nome">
-                            <div id="error-name" class="login-error-message"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Nome da empresa</label><input type="text" name="company" id="company"
-                                class="form-control" placeholder="Informe sua empresa">
-                            <div id="error-company" class="login-error-message"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail corporativo</label><input type="text" name="email" id="email"
-                                class="form-control" placeholder="Informe seu endereço de e-mail">
-                            <div id="error-email" class="login-error-message"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefone com DDD</label><input type="text" name="phone" id="phone"
-                                class="form-control" placeholder="Informe seu telefone ou celular"
-                                oninput="applyPhoneMask(this)" maxlength="15">
-                            <div id="error-phone" class="login-error-message"></div>
-                        </div>
-                        <button type="button" class="register-button" aria-label="Criar conta grátis"
-                            onclick="RegisterFormSubmit()">
-                            Criar conta
-                            <svg class="spinner" width="18" height="18" viewBox="0 0 66 66"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33"
-                                    r="30"></circle>
+					<form name="form-register" class="form-register" method="post">
+						<div class="form-group">
+							<label for="name">Nome</label><input type="text" name="name"
+								id="name" class="form-control" placeholder="Informe seu nome">
+							<div id="error-name" class="login-error-message"></div>
+						</div>
+						<div class="form-group">
+							<label for="company">Nome da empresa</label><input type="text"
+								name="company" id="company" class="form-control"
+								placeholder="Informe sua empresa">
+							<div id="error-company" class="login-error-message"></div>
+						</div>
+						<div class="form-group">
+							<label for="email">E-mail corporativo</label><input type="text"
+								name="email" id="email" class="form-control"
+								placeholder="Informe seu endereço de e-mail">
+							<div id="error-email" class="login-error-message"></div>
+						</div>
+						<div class="form-group">
+							<label for="phone">Telefone com DDD</label><input type="text"
+								name="phone" id="phone" class="form-control"
+								placeholder="Informe seu telefone ou celular"
+								oninput="applyPhoneMask(this)" maxlength="15">
+							<div id="error-phone" class="login-error-message"></div>
+						</div>
+						<button type="button" class="register-button"
+							aria-label="Criar conta grátis" onclick="RegisterFormSubmit()">
+							Criar conta
+							<svg class="spinner" width="18" height="18" viewBox="0 0 66 66"
+								xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none"
+									stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
                             </svg>
-                        </button>
-                    </form>
-                    <p>
-                        Já tem uma conta? <a href="https://app.sults.com.br" class="register-link">Fazer login</a>
-                    </p>
+						</button>
+					</form>
+					<p>
+						Já tem uma conta? <a href="https://app.sults.com.br"
+							class="register-link">Fazer login</a>
+					</p>
 
-                    <div class="copy">
-                        <img src="/sults/images/logo/sults/completa/sults-logo-oficial.svg" width="95" height="24"
-                            alt="Logo oficial da SULTS completa">
-                        <p>© 2024 SULTS Tecnology. All Rights Reserved.</p>
-                    </div>
-                </div>
-                <div class="left-div" role="img" arial-label="sults imagem de cadastro"></div>
-            </div>
+					<div class="copy">
+						<img
+							src="/sults/images/logo/sults/completa/sults-logo-oficial.svg"
+							width="95" height="24" alt="Logo oficial da SULTS completa">
+						<p>© 2024 SULTS Tecnology. All Rights Reserved.</p>
+					</div>
+				</div>
 
-            <div class="conta-success-container">
-                <h2 id="nameRegister"
-                    style="color: #032d60; font-size: 2.4rem; font-weight: 700; text-align: center; line-height: 1.2; text-transform: unset">
-                    Verifique sua caixa de entrada no e-mail</h2>
-                <p style="text-align: center">Falta pouco para começar seu teste
-                    de 14 dias grátis, acesse o link que enviamos no seu e-mail ou
-                    WhatsApp.</p>
-                <img src="/sults/images/icones/register/email-fast-outline.webp" loading="lazy" alt="E-mail Icone"
-                    width="68" height="68">
-                <p style="text-align: center">Enviamos um e-mail para:</p>
-                <p id="emailRegister"
-                    style="text-align: center; color: #032d60; font-weight: 700; font-size: 1.5rem; margin-top: 0;">
-                    Seu
-                    e-mail informado.</p>
-                <button type="button" class="register-button" style="width: 60%" aria-label="Voltar para o site"
-                    onclick="window.location.href='/'">Voltar
-                    para o site</button>
-                <p class="text-center">Não recebeu o e-mail? Verifique sua caixa
-                    de spam ou tente novamente.</p>
-            </div>
-            <div id="errorModal" class="modal-contact">
-                <div class="modal-content">
-                    <img src="/sults/images/icones/contato/error-modal-icon.webp" loading="lazy"
-                        alt="E-mail Error Ícone" width="68" height="68">
-                    <h4
-                        style="color: rgba(3, 45, 96, 1); font-weight: 700; font-size: 1.5rem; text-align: center; margin-bottom: 0; line-height: 1.2">
-                        Oops! Algo de errado aconteceu!</h4>
-                    <p
-                        style="color: rgba(95, 102, 108, 1); font-weight: 400; font-size: 1rem; text-align: center; margin-top: 0;">
-                        Desculpe, não conseguimos processar sua solicitação, nossa equipe
-                        será notificada. Por favor, tente novamente mais tarde.</p>
-                    <button type="button" id="closeModalError" aria-label="Fechar Modal" class="contact-button"
-                        style="text-align: center; width: 100%">Fechar</button>
-                </div>
-            </div>
 
-        </section>
-    </main>
-    <script>
-        function RegisterFormSubmit(event) {
-            let name = document.querySelector("#name").value, company = document
-                .querySelector("#company").value, email = document
-                    .querySelector("#email").value, phone = document
-                        .querySelector("#phone").value;
-            if (!validateForm(name, company, email, phone))
-                return;
-            document.querySelector(".spinner").style.display = "inline-block";
-            sendAsgard(name, company, email, phone);
-        }
-        function sendAsgard(name, company, email, phone) {
-            let a = new XMLHttpRequest();
-            (a.withCredentials = !1),
-                a
-                    .open("POST",
-                        "https://3sksqeptx3.execute-api.us-east-1.amazonaws.com/prod/site/request-demo"),
-                a.setRequestHeader("Content-Type", "application/json"),
-                (a.onload = function () {
-                    if (a.status === 200) {
-                        document.querySelector(".spinner").style.display = "none";
-                        document.querySelector(".conta-success-container").style.display = "flex";
-                        document.querySelector(".conta-register-container").style.display = "none";
-                        document.querySelector("#nameRegister").textContent = name
-                            .split(' ')[0]
-                            + ", verifique sua caixa de entrada no e-mail";
-                        document.querySelector("#emailRegister").textContent = email;
-                        umami.track('Signup: Criação de conta');
-                    } else {
-                        document.getElementById("errorModal").style.display = "block";
-                        umami.track('Erro ' + a.status
-                            + ': Criação de conta', {
-                            Event: new Date().toLocaleString('pt-BR', {
-                                timeZone: 'America/Sao_Paulo'
-                            })
-                        });
-                    }
-                });
-            let r = {
-                tituloNegocio: company + " - " + name,
-                nome: name,
-                email: email,
-                celular: phone,
-                empresa: company,
-                responsavelId: 979,
-                campanhaId: null,
-                origemId: 1,
-                etapaId: 17,
-            };
-            a.send(JSON.stringify(r));
-        }
-        function validateForm(name, company, email, phone) {
-            let isValid = true;
-            clearErrors();
-            if (name === "") {
-                showError("error-name", "Nome: Preenchimento obrigatório");
-                isValid = false;
-            }
-            if (company === "") {
-                showError("error-company", "Empresa: Preenchimento obrigatório");
-                isValid = false;
-            }
-            if (email === "") {
-                showError("error-email", "E-mail: Preenchimento obrigatório");
-                isValid = false;
-            } else {
-                if (!validateEmail(email)) {
-                    showError("error-email", "O e-mail informado não é válido");
-                    isValid = false;
-                }
-            }
-            if (phone === "") {
-                showError("error-phone", "Telefone: Preenchimento obrigatório");
-                isValid = false;
-            } else {
-                if (!validatePhone(phone)) {
-                    showError("error-phone",
-                        "O telefone informado não é válido");
-                    isValid = false;
-                }
-            }
-            return isValid;
-        }
-        function validateEmail(email) {
-            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return regex.test(email);
-        }
-        function validatePhone(phone) {
-            const regex = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/;
-            return regex.test(phone);
-        }
-        function showError(fieldId, message) {
-            const errorDiv = document.getElementById(fieldId);
-            errorDiv.textContent = message;
-            errorDiv.style.display = "block";
-        }
-        function applyPhoneMask(element) {
-            let value = element.value;
-            value = value.replace(/\D/g, "");
-            if (value.length <= 10) {
-                value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
-                value = value.replace(/(\d{4})(\d)/, "$1-$2");
-            } else {
-                value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
-                value = value.replace(/(\d{5})(\d)/, "$1-$2");
-            }
-            element.value = value;
-        }
-        function clearErrors() {
-            document.querySelectorAll(".login-error-message").forEach(
-                function (error) {
-                    error.textContent = "";
-                    error.style.display = "none";
-                });
-        }
-        document.getElementById("closeModalError").onclick = function () {
-            document.getElementById("errorModal").style.display = "none";
-        };
 
-        let contentMenu = document.querySelector('.menu-toggle');
-        let menu = document.querySelector('.menu');
-        
-        contentMenu.onclick = function () {
-            menu.classList.toggle('active');
-        }
-    </script>
+
+				<div class="left-div">
+					<div class="teste1">
+						<div class="teste3">
+							<div>
+								<h2
+									style="color: #032d60; font-size: 1.0rem; font-weight: 600; text-align: left; line-height: 1.2; margin-bottom: 10px; width: 80%;">
+									Escolha um plano para iniciar o teste:</h2>
+							</div>
+							<div class="teste4">
+								<a href="https://www.sults.com.br/planos"> nossos planos</a>
+							</div>
+						</div>
+
+						<div class="select">
+							<select id="target">
+							
+								<option value="content_1" selected><span>Professional</span></option>
+								<option value="content_2"><span>Starter</span></option>
+								<option value="content_3"><span>Enterprise</span></option>
+								<select>
+									<div class="teste3">
+										<div id="content_1" class="inv">
+											<div class="icon">
+												<div>
+													<span class="mdi mdi-account-outline"></span>
+													<span>Acesso ilimitado a todos os mais de 25 módulos</span>
+												</div>
+												<div>
+													<span class="mdi mdi-database-outline">
+													</span>
+													<span>500GB de
+													armazenamento</span>
+												</div>
+												<div>
+													<span class="mdi mdi-image-outline"></span>
+													<span>Suporte em
+													horário comercial</span>
+												</div>
+											</div>
+										</div>
+
+										<div id="content_2" class="inv">
+											<div class="icon">
+												<div>
+													<span class="mdi mdi-account-outline"></span>
+												</div>
+												<span>Acesso
+													ilimitado a todos os mais de 25 módulos</span>
+												<div>
+													<span class="mdi mdi-database-outline"></span>
+													<span>100GB de
+													armazenamento</span>
+												</div>
+												<div>
+													<span class="mdi mdi-image-outline"></span>
+													<span>Analista de
+													suporte</span>
+												</div>
+											</div>
+										</div>
+
+
+										<div id="content_3" class="inv">
+											<div class="icon">
+												<div>
+													<span class="mdi mdi-account-outline"></span>
+													<span>Atendimento e
+													suporte dedicado</span>
+												</div>
+												<div>
+													<span class="mdi mdi-database-outline"></span>
+													<span>1TB de
+													armazenamento</span>
+												</div>
+												<div>
+													<span class="mdi mdi-image-outline"></span>
+													<span>Suporte
+													prioritário</span>
+												</div>
+											</div>
+										</div>
+									</div>
+						</div>
+			<div class="contact-grid-item"><img src="/sults/images/icones/contato/frame-people.webp" loading="lazy" alt="Quero falar com vendas" width="43" height="42"><h3 class="contact-subtitle">Quero falar com vendas</h3><p>Tire dúvidas sobre produtos, planos e preços com nosso time comercial.</p><a class="contact-button" data-umami-event="Contato: Chame no WhatsApp" data-umami-event-setor="Vendas" href="https://wa.me/553498932540?text=553498932540&amp;text=Olá,%20gostaria%20de%20saber%20sobre%20planos%20e%20preços" target="_blank" rel="noreferrer"><svg style="margin-bottom: 3px; margin-right: 4px;" fill="white" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.3C14.15 13.55 13.67 14.11 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z"></path></svg> Chame no WhatsApp </a></div>
+			<div class="contact-grid-item"><img src="/sults/images/icones/contato/question_box.webp" loading="lazy" alt="Central de ajuda" width="43" height="42"><h3 class="contact-subtitle">Central de ajuda</h3><p>Encontre respostas para perguntas mais frequentes relacionados ao sistema SULTS.</p><a href="https://ajuda.sults.com.br" target="_blank" class="contact-button-secondary">Acessar Base de conhecimento <i><img alt="Ir para o link externo" src="/sults/images/icones/link_externo_seta_azul.svg" height="16" width="16" style="margin-bottom: 2px"></i></a></div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<div class="conta-success-container">
+				<h2 id="nameRegister"
+					style="color: #032d60; font-size: 2.4rem; font-weight: 700; text-align: center; line-height: 1.2; text-transform: unset">
+					Verifique sua caixa de entrada no e-mail</h2>
+				<p style="text-align: center">Falta pouco para começar seu teste
+					de 14 dias grátis, acesse o link que enviamos no seu e-mail ou
+					WhatsApp.</p>
+				<img src="/sults/images/icones/register/email-fast-outline.webp"
+					loading="lazy" alt="E-mail Icone" width="68" height="68">
+				<p style="text-align: center">Enviamos um e-mail para:</p>
+				<p id="emailRegister"
+					style="text-align: center; color: #032d60; font-weight: 700; font-size: 1.5rem; margin-top: 0;">
+					Seu e-mail informado.</p>
+				<button type="button" class="register-button" style="width: 60%"
+					aria-label="Voltar para o site" onclick="window.location.href='/'">Voltar
+					para o site</button>
+				<p class="text-center">Não recebeu o e-mail? Verifique sua caixa
+					de spam ou tente novamente.</p>
+			</div>
+			<div id="errorModal" class="modal-contact">
+				<div class="modal-content">
+					<img src="/sults/images/icones/contato/error-modal-icon.webp"
+						loading="lazy" alt="E-mail Error Ícone" width="68" height="68">
+					<h4
+						style="color: rgba(3, 45, 96, 1); font-weight: 700; font-size: 1.5rem; text-align: center; margin-bottom: 0; line-height: 1.2">
+						Oops! Algo de errado aconteceu!</h4>
+					<p
+						style="color: rgba(95, 102, 108, 1); font-weight: 400; font-size: 1rem; text-align: center; margin-top: 0;">
+						Desculpe, não conseguimos processar sua solicitação, nossa equipe
+						será notificada. Por favor, tente novamente mais tarde.</p>
+					<button type="button" id="closeModalError"
+						aria-label="Fechar Modal" class="contact-button"
+						style="text-align: center; width: 100%">Fechar</button>
+				</div>
+			</div>
+
+		</section>
+	</main>
+	<script>
+		function RegisterFormSubmit(event) {
+			let name = document.querySelector("#name").value, company = document
+					.querySelector("#company").value, email = document
+					.querySelector("#email").value, phone = document
+					.querySelector("#phone").value;
+			if (!validateForm(name, company, email, phone))
+				return;
+			document.querySelector(".spinner").style.display = "inline-block";
+			sendAsgard(name, company, email, phone);
+		}
+		function sendAsgard(name, company, email, phone) {
+			let a = new XMLHttpRequest();
+					(a.withCredentials = !1),
+					a
+							.open("POST",
+									"https://m4388lxmy5.execute-api.us-east-1.amazonaws.com/prod/site/request-demo"),
+					a.setRequestHeader("Content-Type", "application/json"),
+					(a.onload = function() {
+						if (a.status === 200) {
+							document.querySelector(".spinner").style.display = "none";
+							document.querySelector(".conta-success-container").style.display = "flex";
+							document.querySelector(".conta-register-container").style.display = "none";
+							document.querySelector("#nameRegister").textContent = name
+									.split(' ')[0]
+									+ ", verifique sua caixa de entrada no e-mail";
+							document.querySelector("#emailRegister").textContent = email;
+							umami.track('Signup: Criação de conta');
+						} else {
+							document.getElementById("errorModal").style.display = "block";
+							umami.track('Erro ' + a.status
+									+ ': Criação de conta', {
+								Event : new Date().toLocaleString('pt-BR', {
+									timeZone : 'America/Sao_Paulo'
+								})
+							});
+						}
+					});
+			let r = {
+				tituloNegocio : company + " - " + name,
+				nome : name,
+				email : email,
+				celular : phone,
+				empresa : company,
+				responsavelId : 979,
+				campanhaId : null,
+				origemId : 1,
+				etapaId : 17,
+			};
+			a.send(JSON.stringify(r));
+		}
+		function validateForm(name, company, email, phone) {
+			let isValid = true;
+			clearErrors();
+			if (name === "") {
+				showError("error-name", "Nome: Preenchimento obrigatório");
+				isValid = false;
+			}
+			if (company === "") {
+				showError("error-company", "Empresa: Preenchimento obrigatório");
+				isValid = false;
+			}
+			if (email === "") {
+				showError("error-email", "E-mail: Preenchimento obrigatório");
+				isValid = false;
+			} else {
+				if (!validateEmail(email)) {
+					showError("error-email", "O e-mail informado não é válido");
+					isValid = false;
+				}
+			}
+			if (phone === "") {
+				showError("error-phone", "Telefone: Preenchimento obrigatório");
+				isValid = false;
+			} else {
+				if (!validatePhone(phone)) {
+					showError("error-phone",
+							"O telefone informado não é válido");
+					isValid = false;
+				}
+			}
+			return isValid;
+		}
+		function validateEmail(email) {
+			const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return regex.test(email);
+		}
+		function validatePhone(phone) {
+			const regex = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/;
+			return regex.test(phone);
+		}
+		function showError(fieldId, message) {
+			const errorDiv = document.getElementById(fieldId);
+			errorDiv.textContent = message;
+			errorDiv.style.display = "block";
+		}
+		function applyPhoneMask(element) {
+			let value = element.value;
+			value = value.replace(/\D/g, "");
+			if (value.length <= 10) {
+				value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+				value = value.replace(/(\d{4})(\d)/, "$1-$2");
+			} else {
+				value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+				value = value.replace(/(\d{5})(\d)/, "$1-$2");
+			}
+			element.value = value;
+		}
+		function clearErrors() {
+			document.querySelectorAll(".login-error-message").forEach(
+					function(error) {
+						error.textContent = "";
+						error.style.display = "none";
+					});
+		}
+		document.getElementById("closeModalError").onclick = function() {
+			document.getElementById("errorModal").style.display = "none";
+		};
+
+		document
+				.addEventListener(
+						'DOMContentLoaded',
+						function() {
+
+							function updateContent() {
+								var vis = document.querySelector('.vis'), target = document
+										.getElementById(document
+												.getElementById('target').value);
+
+								if (vis !== null) {
+									vis.className = 'inv';
+								}
+								if (target !== null) {
+									target.className = 'vis';
+								}
+							}
+							updateContent();
+
+							document.getElementById('target').addEventListener(
+									'change', function() {
+										updateContent();
+									});
+						});
+	</script>
 </body>
-
 </html>
