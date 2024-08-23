@@ -45,13 +45,13 @@ body {
 	/* max-width: 700px; */
 }
 
-.teste {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-	max-width: 560px;
-	border-right: 1px solid #ebebeb;
+.register-form-wrapper{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    /* align-items: center; */
+    max-width: 560px;
+    border-right: 1px solid #ebebeb;
 }
 
 .left-div {
@@ -95,6 +95,12 @@ body {
 	list-style: none;
 	color: #616161;
 	padding-left: 0px;
+	width: 100%;
+}
+
+.dropdown-content .list-recursos{
+padding-bottom: 15px;
+	    border-bottom: 1px solid #ebebeb;
 }
 
 .conta-success-container {
@@ -114,6 +120,34 @@ body {
 	box-sizing: border-box;
 }
 
+
+.plan-selection {
+	padding-left: 70px;
+}
+
+.register-header{
+	width: 90%;
+}
+
+@media ( max-width : 1010px) {
+	.conta-register-container {
+		flex-direction: column-reverse;
+	}
+
+	.register-form-wrapper{
+		    border-right: none;
+		        padding-top: 50px;
+	}
+	
+	.plan-selection {
+    padding-left: 0;
+    }
+    
+    .register-header, .register-header h1 {
+    	width: 100%;
+    }
+}
+
 @media ( max-width : 768px) {
 	.conta-register-container, .conta-success-container {
 		padding: 0 1rem !important;
@@ -122,9 +156,11 @@ body {
 		text-align: left !important;
 		font-size: 2.2rem !important;
 	}
-	.form-register {
+	
+	.register-header {
 		width: 100%;
 	}
+	
 	.conta-register-section {
 		box-shadow: none;
 	}
@@ -134,9 +170,9 @@ body {
 }
 
 @media ( min-width : 768px) {
-	.form-register {
+	/*.form-register {
 		width: 75%;
-	}
+	} */
 	.conta-register-container form+p, h1 {
 		width: 75%;
 	}
@@ -274,978 +310,72 @@ input:focus {
 	background: #165694;
 	transition: background ease-in 100ms;
 }
+		@-webkit-keyframes rotator {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+            }
+        }
+
+        @keyframes rotator {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(270deg);
+                transform: rotate(270deg);
+            }
+        }
+
+		.path {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            stroke: #fff;
+            background-image: linear-gradient(-20deg, #0f5da6 0, #0f5da6 100%);
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            -webkit-animation: dash 1.4s ease-in-out infinite;
+            animation: dash 1.4s ease-in-out infinite;
+        }
+
+		@-webkit-keyframes dash {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+            }
+
+            100% {
+                stroke-dashoffset: 187;
+                -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                -webkit-transform: rotate(450deg);
+                transform: rotate(450deg);
+            }
+        }
 
-@
--webkit-keyframes rotator { 0% {
-	-webkit-transform: rotate(0deg);
-	transform: rotate(0deg);
-}
-
-100
-
-
-
-
- 
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-270deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-270deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-}
-}
-@
-keyframes rotator { 0% {
-	-webkit-transform: rotate(0deg);
-	transform: rotate(0deg);
-}
-
-100
-
-
-
-
- 
-
-
-
-
-%
-{
--webkit-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-270deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-270deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-}
-}
-.path {
-	stroke-dasharray: 187;
-	stroke-dashoffset: 0;
-	stroke: #fff;
-	background-image: linear-gradient(-20deg, #0f5da6 0, #0f5da6 100%);
-	-webkit-transform-origin: center;
-	transform-origin: center;
-	-webkit-animation: dash 1.4s ease-in-out infinite;
-	animation: dash 1.4s ease-in-out infinite;
-}
-
-@
--webkit-keyframes dash { 0% {
-	stroke-dashoffset: 187;
-}
-
-50
-
-
-
-
- 
-
-
-
-
-%
-{
-stroke-dashoffset
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-46
-
-
-
-
- 
-
-
-
-
-.75
-
-
-
-
-
-
-
-
-;
--webkit-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-135deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-135deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-}
-100
-
-
-
-
- 
-
-
-
-
-%
-{
-stroke-dashoffset
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-187
-
-
-
-
-
-
-
-
-;
--webkit-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-450deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-450deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-}
-}
-@
-keyframes dash { 0% {
-	stroke-dashoffset: 187;
-}
-
-50
-
-
-
-
- 
-
-
-
-
-%
-{
-stroke-dashoffset
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-46
-
-
-
-
- 
-
-
-
-
-.75
-
-
-
-
-
-
-
-
-;
--webkit-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-135deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-135deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-}
-100
-
-
-
-
- 
-
-
-
-
-%
-{
-stroke-dashoffset
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-187
-
-
-
-
-
-
-
-
-;
--webkit-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-450deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-transform
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-            
-
-
-
-
-rotate
-
-
-
-
- 
-
-
-
-
-(
-
-
-
-
-
-
-
-
-450deg
-
-
-
-
-
-
-
-
-)
-
-
-
-
-
-
-
-
-;
-}
-}
 .content-img-register {
 	width: 100%;
 	background: #fbfdfe;
@@ -1269,12 +399,12 @@ rotate
 	margin-bottom: 15px;
 }
 
-@media ( max-width : 1010px) {
-	.conta-register-container {
-		flex-direction: column-reverse;
-	}
+
+
+
+
 	.left-div {
-		width: 540px;
+		width: 100%;
 		border-left: none;
 		display: flex;
 		justify-content: center;
@@ -1282,13 +412,6 @@ rotate
 		align-items: center;
 		max-width: 560px;
 	}
-}
-
-@media ( min-width : 1100px) and (max-width: 1347px) {
-	.content-img-register {
-		grid-template-columns: 50% 50%;
-	}
-}
 
 
 .pagina-nova {
@@ -1299,11 +422,7 @@ rotate
 	display: flex;
 }
 
-.teste1 {
-	padding-left: 70px;
-}
-
-.teste4 {
+.plan-lin {
 	width: 50%;
 }
 
@@ -1404,17 +523,17 @@ color: #032d60;
 .dropdown-content {
   margin-top: 10px;
 }
-.dropdown-item {
+.dropdown-items {
   display: none; /* Start hidden */
 }
 
-.teste3 {
+.plan-selection-header {
 	display: flex;
     justify-content: space-between;
         line-height: 1.2;
 }
 
-.dropdown-item {
+.dropdown-items {
 	padding: 0;
 }
 
@@ -1426,7 +545,9 @@ color: #032d60;
 
 		<section class="conta-register-section section">
 			<div class="conta-register-container container">
-				<div class="teste">
+				<div class="register-form-wrapper">
+					<div class="register-header">
+					
 					<h1
 						style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
 						Seu espaço de trabalho começa aqui</h1>
@@ -1490,24 +611,24 @@ color: #032d60;
 						<p>© 2024 SULTS Tecnology. All Rights Reserved.</p>
 					</div>
 				</div>
+					</div>
 
 
 					<div class="left-div">
-					  <div class="teste1">
-					    <div class="teste3">
+					  <div class="plan-selection">
+					    <div class="plan-selection-header">
 					      <div>
 					        <h2 style="color: #032d60; font-size: 1.0rem; font-weight: 600; text-align: left; line-height: 1.2; margin-bottom: 10px; width: 80%;">
 					          Escolha um plano para iniciar o teste:
 					        </h2>
 					      </div>
-					      <div class="teste4">
+					      <div class="plan-lin">
 					        <a href="https://www.sults.com.br/planos"> conheça nossos planos</a>
 					      </div>
 					    </div>
 					
 					    <div class="dropdown">
-					      <a href="#" class="js-link">Professional 
-<span class="mdi mdi-chevron-down"></span></a>
+					      <a href="#" class="js-link">Professional <span class="mdi mdi-chevron-down"></span></a>
 					      <ul class="js-dropdown-list">
 					        <li data-value="content_1">Professional</li>
 					        <li data-value="content_2">Starter</li>
@@ -1515,58 +636,57 @@ color: #032d60;
 					      </ul>
 					    </div>
 					
-					    <!-- Content for each option -->
+					   
 					    <div class="dropdown-content">
-					      <div id="content_1" class="dropdown-item">
-					        <div class="icon">
-					          <div>
-					            <span class="mdi mdi-account-outline"></span>
-					            <span>Acesso ilimitado a todos os mais de 25 módulos</span>
-					          </div>
-					          <div>
-					            <span class="mdi mdi-database-outline"></span>
-					            <span>500GB de armazenamento</span>
-					          </div>
-					          <div>
-					            <span class="mdi mdi-image-outline"></span>
-					            <span>Suporte em horário comercial</span>
-					          </div>
-					        </div>
+					      <div id="content_1" class="dropdown-items">
+					      	<ul class="list-recursos">
+								<li class="font-default-grey">
+									 <span class="mdi mdi-account-outline"></span>
+									 <span>Acesso ilimitado a todos os mais de 25 módulos</span>
+								</li>
+								<li class="font-default-grey">
+									<span class="mdi mdi-database-outline"></span>
+									<span>500GB de armazenamento</span>
+								</li>
+								<li class="font-default-grey">
+									 <span class="mdi mdi-image-outline"></span> 
+									<span>Suporte em horário comercial</span>
+								</li>
+							</ul>
 					      </div>
 					
-					      <div id="content_2" class="dropdown-item">
-					        <div class="icon">
-					          <div>
-					            <span class="mdi mdi-account-outline"></span>
-					         
-					          <span>Acesso ilimitado a todos os mais de 25 módulos</span>
-					         	 </div>
-					          <div>
-					            <span class="mdi mdi-database-outline"></span>
-					            <span>100GB de armazenamento</span>
-					          </div>
-					          <div>
-					            <span class="mdi mdi-image-outline"></span>
-					            <span>Analista de suporte</span>
-					          </div>
-					        </div>
+					      <div id="content_2" class="dropdown-items">
+					      <ul class="list-recursos">
+								<li class="font-default-grey">
+									 <span class="mdi mdi-account-outline"></span>
+									 <span>Acesso ilimitado a todos os mais de 25 módulos</span>
+								</li>
+								<li class="font-default-grey">
+									<span class="mdi mdi-database-outline"></span>
+									<span>100GB de armazenamento</span>
+								</li>
+								<li class="font-default-grey">
+									 <span class="mdi mdi-image-outline"></span> 
+									<span>Analista de suporte</span>
+								</li>
+							</ul> 
 					      </div>
 					
-					      <div id="content_3" class="dropdown-item">
-					        <div class="icon">
-					          <div>
-					            <span class="mdi mdi-account-outline"></span>
-					            <span>Atendimento e suporte dedicado</span>
-					          </div>
-					          <div>
-					            <span class="mdi mdi-database-outline"></span>
-					            <span>1TB de armazenamento</span>
-					          </div>
-					          <div>
-					            <span class="mdi mdi-image-outline"></span>
-					            <span>Suporte prioritário</span>
-					          </div>
-					        </div>
+					      <div id="content_3" class="dropdown-items">      
+					      <ul class="list-recursos">
+								<li class="font-default-grey">
+									 <span class="mdi mdi-account-outline"></span>
+									 <span>Atendimento e suporte dedicado</span>
+								</li>
+								<li class="font-default-grey">
+									<span class="mdi mdi-database-outline"></span>
+									<span>1TB de armazenamento</span>
+								</li>
+								<li class="font-default-grey">
+									 <span class="mdi mdi-image-outline"></span> 
+									<span>Suporte prioritário</span>
+								</li>
+							</ul> 
 					      </div>
 					    </div>
 					
@@ -1756,7 +876,7 @@ color: #032d60;
 		document.addEventListener('DOMContentLoaded', function() {
 			  var list = document.querySelector('.js-dropdown-list');
 			  var link = document.querySelector('.js-link');
-			  var dropdownItems = document.querySelectorAll('.dropdown-item');
+			  var dropdownItems = document.querySelectorAll('.dropdown-items');
 
 			  // Show "Professional" content by default
 			  var defaultContent = document.getElementById('content_1');
@@ -1767,7 +887,6 @@ color: #032d60;
 
 			  link.addEventListener('click', function(e) {
 			    e.preventDefault();
-			    // Toggle visibility of the dropdown list
 			    list.style.display = (list.style.display === 'block') ? 'none' : 'block';
 			  });
 
