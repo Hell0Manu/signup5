@@ -45,13 +45,14 @@ body {
 	/* max-width: 700px; */
 }
 
-.register-form-wrapper{
-    display: flex;
-    /* justify-content: center; */
-    flex-direction: column;
-    /* align-items: center; */
-    max-width: 560px;
-    border-right: 1px solid #ebebeb;
+.register-form-wrapper {
+	display: flex;
+	/* justify-content: center; */
+	flex-direction: column;
+	/* align-items: center; */
+	max-width: 560px;
+	border-right: 1px solid #ebebeb;
+	width: 100%;
 }
 
 .left-div {
@@ -98,9 +99,9 @@ body {
 	width: 100%;
 }
 
-.dropdown-content .list-recursos{
-padding-bottom: 15px;
-	    border-bottom: 1px solid #ebebeb;
+.dropdown-content .list-recursos {
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ebebeb;
 }
 
 .conta-success-container {
@@ -120,63 +121,36 @@ padding-bottom: 15px;
 	box-sizing: border-box;
 }
 
-
 .plan-selection {
 	padding-left: 70px;
 }
 
-.register-header{
+.register-header {
 	width: 90%;
 }
 
-@media ( max-width : 1010px) {
-	.conta-register-container {
-		flex-direction: column-reverse;
-	}
 
-	.register-form-wrapper{
-		    border-right: none;
-		        padding-top: 50px;
-	}
-	
-	.plan-selection {
-    padding-left: 0;
-    }
-    
-    .register-header, .register-header h1 {
-    	width: 100%;
-    }
+.contact-grid-item {
+	text-align: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1rem;
+	padding: 24px;
+	justify-content: flex-start;
+	border-radius: 16px;
+	border: solid 1px #C3C9D5;
+	margin-bottom: 10px;
 }
 
-@media ( max-width : 768px) {
-	.conta-register-container, .conta-success-container {
-		padding: 0 1rem !important;
+	.first-intro {
+		display: block;
 	}
-	.conta-register-container h1 {
-		text-align: left !important;
-		font-size: 2.2rem !important;
+	.secund-intro {
+		display: none;
 	}
-	
-	.register-header {
-		width: 100%;
-	}
-	
-	.conta-register-section {
-		box-shadow: none;
-	}
-	.conta-register-section {
-		overflow-x: visible;
-	}
-}
 
-@media ( min-width : 768px) {
-	/*.form-register {
-		width: 75%;
-	} */
-	.conta-register-container form+p, h1 {
-		width: 75%;
-	}
-}
+
 
 .form-group {
 	display: flex;
@@ -310,6 +284,7 @@ input:focus {
 	background: #165694;
 	transition: background ease-in 100ms;
 }
+
 		@-webkit-keyframes rotator {
             0% {
                 -webkit-transform: rotate(0deg);
@@ -376,6 +351,53 @@ input:focus {
             }
         }
 
+@media ( max-width : 768px) {
+	.conta-register-container, .conta-success-container {
+		padding: 0 1rem !important;
+	}
+	.conta-register-container h1 {
+		text-align: left !important;
+		font-size: 2.2rem !important;
+	}
+	.register-header {
+		width: 100%;
+	}
+	.conta-register-section {
+		box-shadow: none;
+	}
+	.conta-register-section {
+		overflow-x: visible;
+	}
+}
+
+@media ( max-width : 1010px) {
+	.conta-register-container {
+		flex-direction: column-reverse;
+	}
+	.register-form-wrapper {
+		border-right: none;
+		padding-top: 50px;
+	}
+	.plan-selection {
+		padding-left: 0;
+	}
+		.first-intro, .contact-grid-item {
+		display: none;
+	}
+	.secund-intro {
+		display: block;
+	}
+	.register-header {
+		width: 100%;
+	}
+}
+
+@media ( min-width : 768px) {
+	.conta-register-container form+p {
+		width: 75%;
+	}
+}
+
 .content-img-register {
 	width: 100%;
 	background: #fbfdfe;
@@ -399,20 +421,15 @@ input:focus {
 	margin-bottom: 15px;
 }
 
-
-
-
-
-	.left-div {
-		width: 100%;
-		border-left: none;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		max-width: 560px;
-	}
-
+.left-div {
+	width: 100%;
+	border-left: none;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	max-width: 560px;
+}
 
 .pagina-nova {
 	padding-top: 110px;
@@ -422,121 +439,104 @@ input:focus {
 	display: flex;
 }
 
-.plan-lin {
-	width: 50%;
-}
-
 .font-poppins {
 	font-size: 16px;
 }
-
-.contact-grid-item {
-	text-align: start;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 1rem;
-	padding: 24px;
-	justify-content: flex-start;
-	border-radius: 16px;
-	border: solid 1px #C3C9D5;
-	margin-bottom: 10px;
-}
-
-
-
-
-
 
 /* Layout */
 
 /* Dropdown */
 .left-div .dropdown {
-  margin: 15px 0;
+	margin: 15px 0;
 }
 
 .js-link:hover {
-color: #032d60;
+	color: #032d60;
 }
 
 /* Link styling */
 .js-link {
-  display: block;
-  padding: .5em;
-  color: #032d60;
-  text-decoration: none;
-  @extend %transition;
-      font-weight: 500;
-  font-size: 1.125rem;
-      border-radius: 8px;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 10px;
-    width: 100%;
-    -ms-flex-align: center;
-    align-items: center;
-    background-color: inherit;
-    text-transform: none;
-    -ms-flex-pack: justify;
-    border: transparent;
-    box-shadow: 0 0 0 2px rgba(34, 130, 255, .58);
-    justify-content: space-between;
-    outline: none;
+	display: block;
+	padding: .5em;
+	color: #032d60;
+	text-decoration: none;
+	 @ extend %transition;
+	font-weight: 500;
+	font-size: 1.125rem;
+	border-radius: 8px;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 10px;
+	width: 100%;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: inherit;
+	text-transform: none;
+	-ms-flex-pack: justify;
+	border: transparent;
+	box-shadow: 0 0 0 2px rgba(34, 130, 255, .58);
+	justify-content: space-between;
+	outline: none;
 }
 
 .js-link:active {
-  background: #fbfcfc;
+	background: #fbfcfc;
 }
-.fa {float: right;}
+
+.fa {
+	float: right;
+}
 
 /* List styling */
 .js-dropdown-list {
-  display: none;
-  border: .1em solid #c0cdd1;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-      margin-top: 10px;
-      border-radius: 10px;
-
+	display: none;
+	border: .1em solid #c0cdd1;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	margin-top: 10px;
+	border-radius: 10px;
 }
 
 .js-dropdown-list li {
-  padding: .5em;
-  cursor: pointer;
-  @extend %transition;
-  font
+	padding: .5em;
+	cursor: pointer;
+	@
+	extend
+	%transition;
+	font
 }
 
 .js-dropdown-list li:last-child {
-  color: #ad0000;
+	color: #ad0000;
 }
-.js-dropdown-list li:hover,
-.js-dropdown-list li:focus {
-  background: rgb(34 130 255 / 10%);
+
+.js-dropdown-list li:hover, .js-dropdown-list li:focus {
+	background: rgb(34 130 255/ 10%);
 }
+
 .js-dropdown-list li:active {
-  background: #fbfcfc;
+	background: #fbfcfc;
 }
 
 /* Content styling */
 .dropdown-content {
-  margin-top: 10px;
+	margin-top: 10px;
 }
+
 .dropdown-items {
-  display: none; /* Start hidden */
+	display: none; /* Start hidden */
 }
 
 .plan-selection-header {
 	display: flex;
-    justify-content: space-between;
-        line-height: 1.2;
+	justify-content: space-between;
+	line-height: 1.2;
 }
 
 .dropdown-items {
 	padding: 0;
 }
-
 </style>
 </head>
 <body>
@@ -548,23 +548,29 @@ color: #032d60;
 				<div class="register-form-wrapper">
 					<div class="register-header">
 					
-					<h1
-						style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
-						Seu espaço de trabalho começa aqui</h1>
-
-					<ul class="list-recursos">
-						<li class="font-default-grey"><i class="check"></i> <span
-							class="font-poppins font-small font-14 line-24">Sem
-								cobrança durante o período de teste</span></li>
-						<li class="font-default-grey"><i class="check"></i> <span
-							class="font-poppins font-small font-14 line-24">Acesse
-								todas as funcionalidades do plano escolhido</span></li>
-						<li class="font-default-grey"><i class="check"></i> <span
-							class="font-poppins font-small font-14 line-24">Configure
-								sua conta em poucos minutos</span></li>
-					</ul>
+					<div class="first-intro">
+						<h1
+							style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
+							Seu espaço de trabalho começa aqui</h1>
+	
+						<ul class="list-recursos">
+							<li class="font-default-grey"><i class="check"></i> <span
+								class="font-poppins font-small font-14 line-24">Sem
+									cobrança durante o período de teste</span></li>
+							<li class="font-default-grey"><i class="check"></i> <span
+								class="font-poppins font-small font-14 line-24">Acesse
+									todas as funcionalidades do plano escolhido</span></li>
+							<li class="font-default-grey"><i class="check"></i> <span
+								class="font-poppins font-small font-14 line-24">Configure
+									sua conta em poucos minutos</span></li>
+						</ul>
+					</div>
 
 					<form name="form-register" class="form-register" method="post">
+						<h2
+							style="color: #032d60; font-size: 1.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
+							Seu espaço de trabalho começa aqui</h2>
+						
 						<div class="form-group">
 							<label for="name">Nome</label><input type="text" name="name"
 								id="name" class="form-control" placeholder="Informe seu nome">
@@ -616,15 +622,32 @@ color: #032d60;
 
 					<div class="left-div">
 					  <div class="plan-selection">
+					  	<div class="secund-intro">
+						<h1
+							style="color: #032d60; font-size: 2.5rem; font-weight: 700; text-align: left; line-height: 1.2; margin-bottom: 10px;">
+							Seu espaço de trabalho começa aqui</h1>
+	
+						<ul class="list-recursos">
+							<li class="font-default-grey"><i class="check"></i> <span
+								class="font-poppins font-small font-14 line-24">Sem
+									cobrança durante o período de teste</span></li>
+							<li class="font-default-grey"><i class="check"></i> <span
+								class="font-poppins font-small font-14 line-24">Acesse
+									todas as funcionalidades do plano escolhido</span></li>
+							<li class="font-default-grey"><i class="check"></i> <span
+								class="font-poppins font-small font-14 line-24">Configure
+									sua conta em poucos minutos</span></li>
+						</ul>
+					</div>
+					  
 					    <div class="plan-selection-header">
-					      <div>
-					        <h2 style="color: #032d60; font-size: 1.0rem; font-weight: 600; text-align: left; line-height: 1.2; margin-bottom: 10px; width: 80%;">
-					          Escolha um plano para iniciar o teste:
+					      
+					        <h2 style="color: #032d60; font-size: 1.0rem; font-weight: 600; text-align: left; line-height: 1.2; margin-bottom: 10px; width: 100%;">
+					           <a href="https://www.sults.com.br/planos">
+					           conheça nossos planos:
+					           </a>
 					        </h2>
-					      </div>
-					      <div class="plan-lin">
-					        <a href="https://www.sults.com.br/planos"> conheça nossos planos</a>
-					      </div>
+					      
 					    </div>
 					
 					    <div class="dropdown">
